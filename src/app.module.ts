@@ -1,8 +1,38 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { config } from './config';
+import { UsersModule } from './api/users/users.module';
+import { AuthModule } from './api/auth/auth.module';
+import { JwtStrategy } from './common/jwt/jwt.strategy';
+import { JwtService } from '@nestjs/jwt';
+import { UserEntity } from './core/entity/user.entity';
+import { JwtAuthGuard } from './common/guard/AuthGuard';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './common/guard/RoleGuard';
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: config.DB_URL,
+      synchronize: true,
+      entities: [UserEntity],
+      ssl: { rejectUnauthorized: false }
+    }),
+    AuthModule,
+    UsersModule,
+  ],
+  providers: [
+    JwtStrategy,
+    JwtService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ]
 })
-export class AppModule {}
+export class AppModule { }
