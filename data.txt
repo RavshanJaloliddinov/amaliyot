@@ -1,0 +1,41 @@
+  {
+    "id": "f29e5ba3-0ffc-4cd7-996b-4e3a27784b5a",
+    "is_active": true,
+    "is_deleted": false,
+    "created_at": "1740507760613",
+    "updated_at": "1740507726396",
+    "deleted_at": null,
+    "name": "John Doe",
+    "email": "example@example.com",
+    "password": "$2b$10$E9zEslyzQjlSdm6QcKavmuolJzmFfia1eqvsdToK2DwmjdFRkKjpW",
+    "role": "user",
+    "created_by": null,
+    "updated_by": null
+  },
+  {
+    "id": "aeb2468d-1826-4959-90f9-d434e4994d0c",
+    "is_active": true,
+    "is_deleted": false,
+    "created_at": "1740508005899",
+    "updated_at": "1740508005899",
+    "deleted_at": null,
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "$2b$10$wWngU8eJhfh4JaJYyWiztezTWN9v6LS4Ljq5gjrAxpWxU8Hywqgq2",
+    "role": "admin"
+  },
+  {
+    "id": "f3ee7134-1f28-4efc-b3d7-7c006666e58b",
+    "is_active": true,
+    "is_deleted": false,
+    "created_at": "1740508036978",
+    "updated_at": "1740508036978",
+    "deleted_at": null,
+    "name": "Super Admin",
+    "email": "superadmin@gmail.com",
+    "password": "$2b$10$otJgF9hnddjjLhWgjPntv.r55T3UKvu4hLXuwcIsGkSyroEeIc3eC",
+    "role": "super_admin"
+  }
+
+
+DATABASE_URL: postgresql://auth_cue6_user:QSBVoo54Rll1GDhPiCUJsr75j7ya21Fv@dpg-cuv0ind2ng1s73fsg87g-a.oregon-postgres.render.com/auth_cue6
