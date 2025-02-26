@@ -9,6 +9,8 @@ import { UserEntity } from './core/entity/user.entity';
 import { JwtAuthGuard } from './common/guard/AuthGuard';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './common/guard/RoleGuard';
+import { CategoryModule } from './api/category/category.module';
+import { CategoryEntity } from './core/entity/category.entity';
 
 @Module({
   imports: [
@@ -16,11 +18,12 @@ import { RolesGuard } from './common/guard/RoleGuard';
       type: 'postgres',
       url: config.DB_URL,
       synchronize: true,
-      entities: [UserEntity],
-      ssl: { rejectUnauthorized: false }
+      entities: [UserEntity, CategoryEntity],
+      ssl: false
     }),
-    AuthModule,
+    // AuthModule,
     UsersModule,
+    CategoryModule,
   ],
   providers: [
     JwtStrategy,
@@ -29,10 +32,10 @@ import { RolesGuard } from './common/guard/RoleGuard';
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: RolesGuard,
+    // },
   ]
 })
 export class AppModule { }

@@ -21,8 +21,6 @@ import { ProfileService } from "../service/profile.service";
 @ApiBearerAuth('access-token')
 @Controller("profile")
 export class ProfileController {
-    private readonly logger = new Logger(ProfileController.name);
-
     constructor(private readonly profileService: ProfileService) { }
 
     @ApiOperation({ summary: "Get current user profile" })
@@ -32,7 +30,6 @@ export class ProfileController {
     async getCurrentUserProfile(
         @CurrentUser() currentUser: UserEntity,
     ): Promise<UserEntity> {
-        this.logger.log(`Fetching profile for user ID: ${currentUser.id}`);
         return this.profileService.getCurrentUserById(currentUser.id);
     }
 
@@ -46,7 +43,6 @@ export class ProfileController {
         @Body() updateData: UpdateUserDto,
         @CurrentUser() currentUser: UserEntity,
     ): Promise<UserEntity> {
-        this.logger.log(`Updating profile for user ID: ${currentUser.id}`);
         return this.profileService.updateCurrentUser(currentUser.id, updateData, currentUser);
     }
 
@@ -59,7 +55,6 @@ export class ProfileController {
     async deleteCurrentUserProfile(
         @CurrentUser() currentUser: UserEntity,
     ): Promise<void> {
-        this.logger.log(`Soft deleting profile for user ID: ${currentUser.id}`);
         return this.profileService.softDeleteCurrentUser(currentUser.id, currentUser);
     }
 
