@@ -11,6 +11,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './common/guard/RoleGuard';
 import { CategoryModule } from './api/category/category.module';
 import { CategoryEntity } from './core/entity/category.entity';
+import { MulterModule } from '@nestjs/platform-express';
+import { ProductModule } from './api/product/product.module';
+import { ProductEntity } from './core/entity/product.entity';
 
 @Module({
   imports: [
@@ -18,12 +21,14 @@ import { CategoryEntity } from './core/entity/category.entity';
       type: 'postgres',
       url: config.DB_URL,
       synchronize: true,
-      entities: [UserEntity, CategoryEntity],
+      entities: [UserEntity, CategoryEntity, ProductEntity],
       ssl: false
     }),
-    // AuthModule,
+    AuthModule,
     UsersModule,
     CategoryModule,
+    ProductModule,
+    MulterModule
   ],
   providers: [
     JwtStrategy,

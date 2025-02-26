@@ -66,10 +66,10 @@ export class UserController {
 
 
   @ApiOperation({ summary: "Create new user" })
-  // @RolesDecorator(Roles.SUPER_ADMIN, Roles.USER, Roles.ADMIN)
+  @RolesDecorator(Roles.SUPER_ADMIN, Roles.USER, Roles.ADMIN)
   @ApiResponse({ status: 201, description: "User created", type: UserEntity })
   @ApiResponse({ status: 409, description: "User with this email already exists" })
-  // @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
   async createUser(
     @Body() createUserDto: CreateUserDto,
