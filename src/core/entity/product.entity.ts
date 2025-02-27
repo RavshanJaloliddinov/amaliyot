@@ -1,7 +1,8 @@
-// src/modules/product/entities/product.entity.ts
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from 'src/common/database/BaseEntity';
 import { ProductStatus } from 'src/common/database/Enums';
+import { BasketEntity } from './basket.entity';
+import { UserEntity } from './user.entity';
 
 @Entity('product')
 export class ProductEntity extends BaseEntity {
@@ -22,4 +23,10 @@ export class ProductEntity extends BaseEntity {
 
     @Column({ type: 'varchar', nullable: true })
     image: string;
+
+    @ManyToOne(() => UserEntity, (user) => user.products)
+    user: UserEntity;
+
+    @OneToMany(() => BasketEntity, (basketItem) => basketItem.product)
+    basketItems: BasketEntity[];
 }

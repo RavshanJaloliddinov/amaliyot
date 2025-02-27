@@ -14,6 +14,8 @@ import { CategoryEntity } from './core/entity/category.entity';
 import { MulterModule } from '@nestjs/platform-express';
 import { ProductModule } from './api/product/product.module';
 import { ProductEntity } from './core/entity/product.entity';
+import { BasketModule } from './api/basket/basket.module';
+import { BasketEntity } from './core/entity/basket.entity';
 
 @Module({
   imports: [
@@ -21,14 +23,15 @@ import { ProductEntity } from './core/entity/product.entity';
       type: 'postgres',
       url: config.DB_URL,
       synchronize: true,
-      entities: [UserEntity, CategoryEntity, ProductEntity],
+      entities: [UserEntity, CategoryEntity, ProductEntity, BasketEntity],
       ssl: false
     }),
     AuthModule,
     UsersModule,
     CategoryModule,
     ProductModule,
-    MulterModule
+    MulterModule,
+    BasketModule
   ],
   providers: [
     JwtStrategy,

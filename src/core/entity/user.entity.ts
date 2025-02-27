@@ -1,6 +1,8 @@
 import { BaseEntity } from 'src/common/database/BaseEntity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { Roles } from "src/common/database/Enums";
+import { BasketEntity } from './basket.entity';
+import { ProductEntity } from './product.entity';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
@@ -19,4 +21,11 @@ export class UserEntity extends BaseEntity {
         default: Roles.USER,
     })
     role: Roles;
+
+    @OneToMany(() => ProductEntity, (product) => product.user)
+    products: ProductEntity[];
+
+    @OneToMany(() => BasketEntity, (basketItem) => basketItem.user)
+    basketItems: BasketEntity[];
+
 }
