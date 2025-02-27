@@ -33,7 +33,7 @@ export class BasketController {
 
   // Add product to basket
   @Post('add')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Add product to basket' })
   @ApiResponse({ status: 201, description: 'Product added to basket' })
@@ -46,7 +46,7 @@ export class BasketController {
 
   // Get all products in the basket
   @Get()
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Get all products in the basket' })
   @ApiResponse({ status: 200, description: 'List of basket products' })
@@ -56,7 +56,7 @@ export class BasketController {
 
   // Update quantity of product in the basket
   @Patch('update/:id')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Update quantity of product in the basket' })
   @ApiParam({ name: 'id', type: 'string', description: 'Basket Item ID' })
@@ -71,7 +71,7 @@ export class BasketController {
 
   // Remove product from basket
   @Delete('remove/:id')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Remove product from basket' })
   @ApiParam({ name: 'id', type: 'string', description: 'Basket Item ID' })
@@ -85,7 +85,7 @@ export class BasketController {
 
   // Clear the basket
   @Delete('clear')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Clear the basket' })
   @ApiResponse({ status: 200, description: 'Basket cleared' })

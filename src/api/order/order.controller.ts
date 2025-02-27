@@ -34,7 +34,7 @@ export class OrderController {
 
   // Create a new order
   @Post('create')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Create a new order' })
   @ApiResponse({ status: 201, description: 'Order successfully created' })
@@ -57,7 +57,7 @@ export class OrderController {
 
   // Get orders by user
   @Get('user')
-  @RolesDecorator(Roles.USER)
+  @RolesDecorator(Roles.USER, Roles.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiOperation({ summary: 'Get orders by current user' })
   @ApiResponse({ status: 200, description: 'List of user orders' })
