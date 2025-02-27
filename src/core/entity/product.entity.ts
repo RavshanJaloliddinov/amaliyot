@@ -3,6 +3,7 @@ import { BaseEntity } from 'src/common/database/BaseEntity';
 import { ProductStatus } from 'src/common/database/Enums';
 import { BasketEntity } from './basket.entity';
 import { UserEntity } from './user.entity';
+import { OrderEntity } from './order.entity';
 
 @Entity('product')
 export class ProductEntity extends BaseEntity {
@@ -29,4 +30,8 @@ export class ProductEntity extends BaseEntity {
 
     @OneToMany(() => BasketEntity, (basketItem) => basketItem.product)
     basketItems: BasketEntity[];
+
+    @OneToMany(() => OrderEntity, (order) => order.product)
+    orders: OrderEntity[];
+
 }

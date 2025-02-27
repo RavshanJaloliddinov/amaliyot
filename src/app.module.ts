@@ -16,6 +16,8 @@ import { ProductModule } from './api/product/product.module';
 import { ProductEntity } from './core/entity/product.entity';
 import { BasketModule } from './api/basket/basket.module';
 import { BasketEntity } from './core/entity/basket.entity';
+import { OrderModule } from './api/order/order.module';
+import { OrderEntity } from './core/entity/order.entity';
 
 @Module({
   imports: [
@@ -23,7 +25,7 @@ import { BasketEntity } from './core/entity/basket.entity';
       type: 'postgres',
       url: config.DB_URL,
       synchronize: true,
-      entities: [UserEntity, CategoryEntity, ProductEntity, BasketEntity],
+      entities: [UserEntity, CategoryEntity, ProductEntity, BasketEntity, OrderEntity],
       ssl: false
     }),
     AuthModule,
@@ -31,7 +33,8 @@ import { BasketEntity } from './core/entity/basket.entity';
     CategoryModule,
     ProductModule,
     MulterModule,
-    BasketModule
+    BasketModule,
+    OrderModule,
   ],
   providers: [
     JwtStrategy,

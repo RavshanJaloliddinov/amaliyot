@@ -3,6 +3,7 @@ import { Entity, Column, OneToMany } from 'typeorm';
 import { Roles } from "src/common/database/Enums";
 import { BasketEntity } from './basket.entity';
 import { ProductEntity } from './product.entity';
+import { OrderEntity } from './order.entity';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
@@ -27,5 +28,8 @@ export class UserEntity extends BaseEntity {
 
     @OneToMany(() => BasketEntity, (basketItem) => basketItem.user)
     basketItems: BasketEntity[];
+
+    @OneToMany(() => OrderEntity, (order) => order.user)
+    orders: OrderEntity[];
 
 }

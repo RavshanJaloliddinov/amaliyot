@@ -7,7 +7,7 @@
     "deleted_at": null,
     "name": "John Doe",
     "email": "example@example.com",
-    "password": "$2b$10$E9zEslyzQjlSdm6QcKavmuolJzmFfia1eqvsdToK2DwmjdFRkKjpW",
+    "password": "StrongPassword123!",
     "role": "user",
     "created_by": null,
     "updated_by": null
@@ -21,7 +21,7 @@
     "deleted_at": null,
     "name": "Admin",
     "email": "admin@gmail.com",
-    "password": "$2b$10$wWngU8eJhfh4JaJYyWiztezTWN9v6LS4Ljq5gjrAxpWxU8Hywqgq2",
+    "password": "Password123",
     "role": "admin"
   },
   {
@@ -33,7 +33,7 @@
     "deleted_at": null,
     "name": "Super Admin",
     "email": "superadmin@gmail.com",
-    "password": "$2b$10$otJgF9hnddjjLhWgjPntv.r55T3UKvu4hLXuwcIsGkSyroEeIc3eC",
+    "password": "Password123",
     "role": "super_admin"
   }
 
